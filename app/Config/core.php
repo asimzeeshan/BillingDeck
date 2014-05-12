@@ -222,12 +222,12 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'DYhG93b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi');
+	Configure::write('Security.salt', 'bpGHvNEWyBnMBZaYGKS3dztPAJEsv5rku7nhFVpnaWYMAWVcvh5UJxfPEXDbmsGV');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	Configure::write('Security.cipherSeed', '76859309657453542496749683645');
+	Configure::write('Security.cipherSeed', '4016876359265731412989941231142763560497');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
@@ -358,7 +358,7 @@ if (Configure::read('debug') > 0) {
 }
 
 // Prefix each application on the same server with a different string, to avoid Memcache and APC conflicts.
-$prefix = 'myapp_';
+$prefix = 'bdeck_';
 
 /**
  * Configure the cache used for general framework caching. Path information,
