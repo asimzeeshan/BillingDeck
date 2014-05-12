@@ -3,6 +3,10 @@ BillingDeck is my attempt to use CakePHP framework to bake a simple Billing Appl
 
 [![CakePHP](http://cakephp.org/img/cake-logo.png)](http://www.cakephp.org)
 
+## LICENSE
+
+This code is released under The MIT License (MIT)
+
 ## Credits
 - [asimzeeshan](https://github.com/asimzeeshan) - The sole developer
 - [CakePHP](http://www.cakephp.org) - The rapid development PHP framework
