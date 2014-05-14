@@ -55,9 +55,9 @@ class InvoiceItemsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			//$this->InvoiceItem->create();
+			$this->InvoiceItem->create();
 			if ($this->InvoiceItem->save($this->request->data)) {
-				//$this->Session->setFlash(__('The invoice item has been saved.'));
+				$this->Session->setFlash(__('The invoice item has been saved.'));
 				return $this->redirect(array('controller' => 'invoices', 'action' => 'view', $this->request->data['InvoiceItem']['invoice_id']));
 			} else {
 				$this->Session->setFlash(__('The invoice item could not be saved. Please, try again.'));
@@ -81,7 +81,7 @@ class InvoiceItemsController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->InvoiceItem->save($this->request->data)) {
 				$this->Session->setFlash(__('The invoice item has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller' => 'invoices', 'action' => 'view', $this->request->data['InvoiceItem']['invoice_id']));
 			} else {
 				$this->Session->setFlash(__('The invoice item could not be saved. Please, try again.'));
 			}
@@ -111,6 +111,6 @@ class InvoiceItemsController extends AppController {
 		} else {
 			$this->Session->setFlash(__('The invoice item could not be deleted. Please, try again.'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		return $this->redirect(array('controller'=>'invoices', 'action' => 'index'));
 	}
 }
