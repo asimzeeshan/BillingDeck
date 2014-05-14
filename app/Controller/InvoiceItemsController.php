@@ -17,6 +17,13 @@ class InvoiceItemsController extends AppController {
 	public $components = array('Paginator', 'Session');
 
 /**
+ * Helpers
+ *
+ * @var array
+ */
+    public $helpers = array('Form', 'Html', 'Js', 'Time');
+
+/**
  * index method
  *
  * @return void

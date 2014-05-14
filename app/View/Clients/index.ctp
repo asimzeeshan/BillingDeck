@@ -20,10 +20,10 @@
 		<td><?php echo h($client['Client']['last_name']); ?>&nbsp;</td>
 		<td><?php echo h($client['Client']['email']); ?>&nbsp;</td>
 		<td><?php echo h($client['Client']['vteam_name']); ?>&nbsp;</td>
-		<td><?php echo h($client['Client']['billing_rate']); ?>&nbsp;</td>
-		<td><?php echo h($client['Client']['status']); ?>&nbsp;</td>
-		<td><?php echo h($client['Client']['created']); ?>&nbsp;</td>
-		<td><?php echo h($client['Client']['modified']); ?>&nbsp;</td>
+		<td>$<?php echo h($client['Client']['billing_rate']); ?>&nbsp;</td>
+		<td><?php echo ($client['Client']['status']==1)? "Active" : "<i>Inactive</i>"; ?>&nbsp;</td>
+		<td><?php echo $this->Time->format('F jS, Y', $client['Client']['created']); ?>&nbsp;</td>
+		<td><?php echo $this->Time->format('F jS, Y', $client['Client']['modified']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $client['Client']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $client['Client']['id'])); ?>
