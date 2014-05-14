@@ -10,7 +10,7 @@
 		echo $this->Form->input('vteam_name');
 		echo $this->Form->input('notes');
 		echo $this->Form->input('billing_rate');
-		echo $this->Form->input('status');
+		echo $this->Form->input('status', array('checked'=>'checked'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
