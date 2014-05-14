@@ -6,10 +6,7 @@
 			<th><?php echo $this->Paginator->sort('client_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('quickbooks_invoiceid'); ?></th>
 			<th><?php echo $this->Paginator->sort('is_billable'); ?></th>
-			<th><?php echo $this->Paginator->sort('client_notes'); ?></th>
-			<th><?php echo $this->Paginator->sort('notes'); ?></th>
 			<th><?php echo $this->Paginator->sort('payment_date'); ?></th>
-			<th><?php echo $this->Paginator->sort('payment_comment'); ?></th>
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
@@ -19,17 +16,14 @@
 	<tr>
 		<td><?php echo h($invoice['Invoice']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($invoice['Client']['first_name'], array('controller' => 'clients', 'action' => 'view', $invoice['Client']['id'])); ?>
+			<?php echo $this->Html->link($invoice['Client']['name'], array('controller' => 'clients', 'action' => 'view', $invoice['Client']['id'])); ?>
 		</td>
 		<td><?php echo h($invoice['Invoice']['quickbooks_invoiceid']); ?>&nbsp;</td>
-		<td><?php echo h($invoice['Invoice']['is_billable']); ?>&nbsp;</td>
-		<td><?php echo h($invoice['Invoice']['client_notes']); ?>&nbsp;</td>
-		<td><?php echo h($invoice['Invoice']['notes']); ?>&nbsp;</td>
-		<td><?php echo h($invoice['Invoice']['payment_date']); ?>&nbsp;</td>
-		<td><?php echo h($invoice['Invoice']['payment_comment']); ?>&nbsp;</td>
+		<td><?php echo ($invoice['Invoice']['is_billable']==1) ? "Yes" : "No"; ?>&nbsp;</td>
+		<td><?php echo $this->Time->format('M j, Y', $invoice['Invoice']['payment_date']); ?>&nbsp;</td>
 		<td><?php echo h($invoice['Invoice']['status']); ?>&nbsp;</td>
-		<td><?php echo h($invoice['Invoice']['created']); ?>&nbsp;</td>
-		<td><?php echo h($invoice['Invoice']['modified']); ?>&nbsp;</td>
+		<td><?php echo $this->Time->format('M j, Y', $invoice['Invoice']['created']); ?>&nbsp;</td>
+		<td><?php echo $this->Time->format('M j, Y', $invoice['Invoice']['modified']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $invoice['Invoice']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $invoice['Invoice']['id'])); ?>
