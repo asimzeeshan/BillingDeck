@@ -109,7 +109,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Invoice Item'), array('controller' => 'invoice_items', 'action' => 'add', $invoiceItem['invoice_id'])); ?> </li>
+			<li><?php echo $this->Html->link(__('New Invoice Item'), array('controller' => 'invoice_items', 'action' => 'add', $invoice['Client']['id'])); ?> </li>
 		</ul>
 	</div>
 </div>
