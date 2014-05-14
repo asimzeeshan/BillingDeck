@@ -1,5 +1,5 @@
-[submodule "Plugin/DebugKit"]
-	path = Plugin/DebugKit
+[submodule "app/Plugin/DebugKit"]
+	path = app/Plugin/DebugKit
 	url = https://github.com/cakephp/debug_kit.git
 [submodule "app/Plugin/Migrations"]
 	path = app/Plugin/Migrations
