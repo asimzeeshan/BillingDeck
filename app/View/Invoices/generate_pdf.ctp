@@ -45,6 +45,9 @@ $pdf->Cell(133, 8, "Cell: +92-305-4441-973", "LRB", 0, "L", false);
 $pdf->Ln();
 $pdf->Ln();
 
+// set font to bold
+$this->SetFont('', 'B');
+
 // table headers
 $headers = array(
 			array('#', 10, 'LRT'),
@@ -58,6 +61,9 @@ foreach($headers as $header) {
 	$pdf->Cell($header[1], 10, $header[0], $header[2], 0, "L", false);
 }
 $pdf->Ln();
+
+// set font to un-bold
+$this->SetFont('');
 
 $i = 1;
 $total_hours = 0;
