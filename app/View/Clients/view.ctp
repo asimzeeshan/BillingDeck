@@ -77,10 +77,7 @@
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Quickbooks Invoiceid'); ?></th>
 		<th><?php echo __('Is Billable'); ?></th>
-		<th><?php echo __('Client Notes'); ?></th>
-		<th><?php echo __('Notes'); ?></th>
 		<th><?php echo __('Payment Date'); ?></th>
-		<th><?php echo __('Payment Comment'); ?></th>
 		<th><?php echo __('Status'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
@@ -91,13 +88,10 @@
 			<td><?php echo $invoice['id']; ?></td>
 			<td><?php echo $invoice['quickbooks_invoiceid']; ?></td>
 			<td><?php echo $invoice['is_billable']; ?></td>
-			<td><?php echo $invoice['client_notes']; ?></td>
-			<td><?php echo $invoice['notes']; ?></td>
 			<td><?php echo $invoice['payment_date']; ?></td>
-			<td><?php echo $invoice['payment_comment']; ?></td>
 			<td><?php echo $invoice['status']; ?></td>
-			<td><?php echo $invoice['created']; ?></td>
-			<td><?php echo $invoice['modified']; ?></td>
+			<td><?php echo $this->Time->format('M j, Y', $invoice['created']); ?></td>
+			<td><?php echo $this->Time->format('M j, Y', $invoice['modified']); ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'invoices', 'action' => 'view', $invoice['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'invoices', 'action' => 'edit', $invoice['id'])); ?>
