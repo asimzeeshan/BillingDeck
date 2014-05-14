@@ -81,7 +81,7 @@
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Description'); ?></th>
 		<th><?php echo __('Start Date'); ?></th>
-		<th><?php echo __('C. Date'); ?></th>
+		<th><?php echo __('Completion Date'); ?></th>
 		<th><?php echo __('Hours'); ?></th>
 		<th><?php echo __('Is Billable'); ?></th>
 		<th><?php echo __('Created'); ?></th>
@@ -95,7 +95,7 @@
 			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['start_date']); ?></td>
 			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['completion_date']); ?></td>
 			<td><?php echo $invoiceItem['hours']; ?></td>
-			<td><?php echo $invoiceItem['is_billable']; ?></td>
+			<td><?php echo ($invoiceItem['is_billable']==1) ? "<b>Yes</b>" : "<i>No</i>"; ?></td>
 			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['created']); ?></td>
 			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['modified']); ?></td>
 			<td class="actions">
