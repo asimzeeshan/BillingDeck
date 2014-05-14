@@ -3,10 +3,10 @@
 	<fieldset>
 		<legend><?php echo __('Add Invoice Item'); ?></legend>
 	<?php
-		echo $this->Form->input('invoice_id');
+		echo $this->Form->input('invoice_id', array('default'=>$this->request->pass[0]));
 		echo $this->Form->input('description');
 		echo $this->Form->input('hours');
-		echo $this->Form->input('is_billable');
+		echo $this->Form->input('is_billable', array('checked'=>'checked'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

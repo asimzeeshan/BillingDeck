@@ -3,9 +3,9 @@
 	<fieldset>
 		<legend><?php echo __('Add Invoice'); ?></legend>
 	<?php
-		echo $this->Form->input('client_id');
+		echo $this->Form->input('client_id', array('default'=>$this->request->pass[0]));
 		echo $this->Form->input('quickbooks_invoiceid');
-		echo $this->Form->input('is_billable');
+		echo $this->Form->input('is_billable', array('checked'=>'checked'));
 		echo $this->Form->input('client_notes');
 		echo $this->Form->input('notes');
 		echo $this->Form->input('payment_date');
