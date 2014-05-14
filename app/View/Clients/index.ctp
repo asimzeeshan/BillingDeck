@@ -6,9 +6,7 @@
 			<th><?php echo $this->Paginator->sort('first_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('last_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
-			<th><?php echo $this->Paginator->sort('phone'); ?></th>
 			<th><?php echo $this->Paginator->sort('vteam_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('notes'); ?></th>
 			<th><?php echo $this->Paginator->sort('billing_rate'); ?></th>
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -21,9 +19,7 @@
 		<td><?php echo h($client['Client']['first_name']); ?>&nbsp;</td>
 		<td><?php echo h($client['Client']['last_name']); ?>&nbsp;</td>
 		<td><?php echo h($client['Client']['email']); ?>&nbsp;</td>
-		<td><?php echo h($client['Client']['phone']); ?>&nbsp;</td>
 		<td><?php echo h($client['Client']['vteam_name']); ?>&nbsp;</td>
-		<td><?php echo h($client['Client']['notes']); ?>&nbsp;</td>
 		<td><?php echo h($client['Client']['billing_rate']); ?>&nbsp;</td>
 		<td><?php echo h($client['Client']['status']); ?>&nbsp;</td>
 		<td><?php echo h($client['Client']['created']); ?>&nbsp;</td>
