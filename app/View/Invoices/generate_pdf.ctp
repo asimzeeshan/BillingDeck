@@ -100,6 +100,8 @@ $pdf->Cell(35, 8, "$".$net_payable." USD", "LRBT", 0, "L", false);
 $pdf->Ln();
 
 $pdf->lastPage();
+$filename = $this->request->data['Client']['vteam_name']."-".date('Y-m-d', strtotime($this->request->data['Invoice']['modified']));
+$filename = str_replace(array(" ", ":", "-","/"), "_", $filename);
 header("Content-type: application/pdf");
-$pdf->Output(APP . 'media/invoices' . DS . 'test.pdf', 'I');
+$pdf->Output(APP . 'media/invoices' . DS . $filename.'.pdf', 'I');
 exit;
