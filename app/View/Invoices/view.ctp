@@ -69,7 +69,7 @@
 		<li><?php echo $this->Html->link(__('New Client'), array('controller' => 'clients', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Invoice Items'), array('controller' => 'invoice_items', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Invoice Item'), array('controller' => 'invoice_items', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Generate PDF'), array('action' => 'create_pdf', $invoice['Invoice']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Generate PDF'), array('action' => 'create_pdf', $invoice['Invoice']['id']), array('target'=>'_blank')); ?> </li>
         
 	</ul>
 </div>
