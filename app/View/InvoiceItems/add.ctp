@@ -5,6 +5,8 @@
 	<?php
 		echo $this->Form->input('invoice_id', array('default'=>$this->request->pass[0]));
 		echo $this->Form->input('description');
+		echo $this->Form->input('start_date');
+		echo $this->Form->input('completion_date');
 		echo $this->Form->input('hours');
 		echo $this->Form->input('is_billable', array('checked'=>'checked'));
 	?>

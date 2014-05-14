@@ -112,4 +112,20 @@ class InvoicesController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+/**
+ * pdf method
+ *
+ */
+	public function create_pdf($id = null){
+		$this->Invoice->id = $id;
+		if (!$this->Invoice->exists()) {
+			throw new NotFoundException(__('Invalid invoice'));
+		}
+		$options = array('conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id));
+		$this->request->data = $this->Invoice->find('first', $options);
+		//print_r($this->request->data); exit;
+		$this->layout = '/pdf/default';
+		$this->render('/Invoices/generate_pdf');
+	}
 }

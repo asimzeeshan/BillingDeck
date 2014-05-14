@@ -6,6 +6,8 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('invoice_id');
 		echo $this->Form->input('description');
+		echo $this->Form->input('start_date');
+		echo $this->Form->input('completion_date');
 		echo $this->Form->input('hours');
 		echo $this->Form->input('is_billable');
 	?>

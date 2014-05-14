@@ -69,6 +69,8 @@
 		<li><?php echo $this->Html->link(__('New Client'), array('controller' => 'clients', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Invoice Items'), array('controller' => 'invoice_items', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Invoice Item'), array('controller' => 'invoice_items', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Generate PDF'), array('action' => 'create_pdf', $invoice['Invoice']['id'])); ?> </li>
+        
 	</ul>
 </div>
 <div class="related view">
@@ -78,6 +80,8 @@
 	<tr>
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Description'); ?></th>
+		<th><?php echo __('Start Date'); ?></th>
+		<th><?php echo __('C. Date'); ?></th>
 		<th><?php echo __('Hours'); ?></th>
 		<th><?php echo __('Is Billable'); ?></th>
 		<th><?php echo __('Created'); ?></th>
@@ -88,10 +92,12 @@
 		<tr>
 			<td><?php echo $invoiceItem['id']; ?></td>
 			<td><?php echo $invoiceItem['description']; ?></td>
+			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['start_date']); ?></td>
+			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['completion_date']); ?></td>
 			<td><?php echo $invoiceItem['hours']; ?></td>
 			<td><?php echo $invoiceItem['is_billable']; ?></td>
-			<td><?php echo $invoiceItem['created']; ?></td>
-			<td><?php echo $invoiceItem['modified']; ?></td>
+			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['created']); ?></td>
+			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['modified']); ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'invoice_items', 'action' => 'edit', $invoiceItem['id'])); ?>
 				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'invoice_items', 'action' => 'delete', $invoiceItem['id']), null, __('Are you sure you want to delete # %s?', $invoiceItem['id'])); ?>
