@@ -70,7 +70,7 @@
 	</ul>
 </div>
 <div class="related view">
-	<h3><?php echo __('Related Invoices'); ?></h3>
+	<h3><?php echo __('Invoices'); ?></h3>
 	<?php if (!empty($client['Invoice'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
@@ -86,9 +86,9 @@
 	<?php foreach ($client['Invoice'] as $invoice): ?>
 		<tr>
 			<td><?php echo $invoice['id']; ?></td>
-			<td><?php echo $invoice['quickbooks_invoiceid']; ?></td>
-			<td><?php echo $invoice['is_billable']; ?></td>
-			<td><?php echo $invoice['payment_date']; ?></td>
+			<td><?php echo (empty($invoice['quickbooks_invoiceid'])) ? "N/A" : $invoice['quickbooks_invoiceid']; ?></td>
+			<td><?php echo ($invoice['is_billable']==1)? "Active" : "<i>Inactive</i>"; ?></td>
+			<td><?php echo $this->Time->format('M j, Y', $invoice['payment_date']); ?></td>
 			<td><?php echo $invoice['status']; ?></td>
 			<td><?php echo $this->Time->format('M j, Y', $invoice['created']); ?></td>
 			<td><?php echo $this->Time->format('M j, Y', $invoice['modified']); ?></td>
