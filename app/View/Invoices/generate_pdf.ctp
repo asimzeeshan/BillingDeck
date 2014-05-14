@@ -31,17 +31,17 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $pdf->AddPage();
 
 // build header
-$pdf->Cell(133, 8, "Nextwerk Inc/Vteams", "LRT", 0, "L", false);
-$pdf->Cell(133, 8, "Invoice for N.O.C. Services", "LRT", 0, "L", false);
+$pdf->Cell(133, 7, "Nextwerk Inc/Vteams", "LRT", 0, "L", false);
+$pdf->Cell(133, 7, "Invoice for N.O.C. Services", "LRT", 0, "L", false);
 $pdf->Ln();
-$pdf->Cell(133, 8, "One Technology Drive", "LR", 0, "L", false);
-$pdf->Cell(133, 8, "Issue Date: ".$date, "LR", 0, "L", false);
+$pdf->Cell(133, 7, "One Technology Drive", "LR", 0, "L", false);
+$pdf->Cell(133, 7, "Issue Date: ".$date, "LR", 0, "L", false);
 $pdf->Ln();
-$pdf->Cell(133, 8, "Tolland, CT 06084, USA", "LR", 0, "L", false);
-$pdf->Cell(133, 8, "Manager: Asim Zeeshan (nocmanager@247ne.com)", "LR", 0, "L", false);
+$pdf->Cell(133, 7, "Tolland, CT 06084, USA", "LR", 0, "L", false);
+$pdf->Cell(133, 7, "Manager: Asim Zeeshan (nocmanager@247ne.com)", "LR", 0, "L", false);
 $pdf->Ln();
-$pdf->Cell(133, 8, "Tel: 858-586-7777", "LRB", 0, "L", false);
-$pdf->Cell(133, 8, "Cell: +92-305-4441-973", "LRB", 0, "L", false);
+$pdf->Cell(133, 7, "Tel: 858-586-7777", "LRB", 0, "L", false);
+$pdf->Cell(133, 7, "Cell: +92-305-4441-973", "LRB", 0, "L", false);
 $pdf->Ln();
 $pdf->Ln();
 
@@ -51,14 +51,14 @@ $pdf->SetFont('', 'B');
 // table headers
 $headers = array(
 			array('#', 10, 'LRT'),
-			array('Tasks Performed', 151, 'LRT'),
-			array('Start Date', 35, 'LRT'),
-			array('Completion Date', 35, 'LRT'),
-			array('Hours Spent', 35, 'LRT'),
+			array('Tasks Performed', 146, 'LRT'),
+			array('Start Date', 40, 'LRT'),
+			array('Completion Date', 40, 'LRT'),
+			array('Hours Spent', 30, 'LRT'),
 			);
 
 foreach($headers as $header) {
-	$pdf->Cell($header[1], 10, $header[0], $header[2], 0, "L", false);
+	$pdf->Cell($header[1], 8, $header[0], $header[2], 0, "L", false);
 }
 $pdf->Ln();
 
@@ -69,11 +69,11 @@ $i = 1;
 $total_hours = 0;
 foreach($this->request->data['InvoiceItem'] as $InvoiceItem) {
 	if ($InvoiceItem['is_billable']=="1") {
-		$pdf->Cell(10, 8, $i, "LRBT", 0, "L", false);
-		$pdf->Cell(151, 8, $InvoiceItem['description'], "LRBT", 0, "L", false);
-		$pdf->Cell(35, 8, $this->Time->format('M j, Y', $InvoiceItem['start_date']), "LRBT", 0, "L", false);
-		$pdf->Cell(35, 8, $this->Time->format('M j, Y', $InvoiceItem['completion_date']), "LRBT", 0, "L", false);
-		$pdf->Cell(35, 8, $InvoiceItem['hours'], "LRBT", 0, "L", false);
+		$pdf->Cell(10, 7, $i, "LRBT", 0, "L", false);
+		$pdf->Cell(146, 7, $InvoiceItem['description'], "LRBT", 0, "L", false);
+		$pdf->Cell(40, 7, $this->Time->format('M j, Y', $InvoiceItem['start_date']), "LRBT", 0, "L", false);
+		$pdf->Cell(40, 7, $this->Time->format('M j, Y', $InvoiceItem['completion_date']), "LRBT", 0, "L", false);
+		$pdf->Cell(30, 7, $InvoiceItem['hours'], "LRBT", 0, "L", false);
 		$pdf->Ln();
 		$i++;
 		$total_hours += $InvoiceItem['hours'];
@@ -86,23 +86,29 @@ $net_payable = $this->request->data['Client']['billing_rate'] * $total_hours;
 $net_payable = number_format($net_payable, 2);
 
 $pdf->Ln();
-$pdf->Cell(10, 8, "", false, 0, "L", false);
-$pdf->Cell(151, 8, "", false, 0, "L", false);
-$pdf->Cell(35, 8, "", false, 0, "L", false);
-$pdf->Cell(35, 8, "Total Hours", "LRBT", 0, "L", false);
-$pdf->Cell(35, 8, $total_hours, "LRBT", 0, "L", false);
+$pdf->Cell(10, 7, "", false, 0, "L", false);
+$pdf->Cell(151, 7, "", false, 0, "L", false);
+$pdf->Cell(35, 7, "", false, 0, "L", false);
+$pdf->SetFont('', 'B');
+$pdf->Cell(35, 7, "Total Hours", "LRBT", 0, "L", false);
+$pdf->SetFont('');
+$pdf->Cell(35, 7, $total_hours, "LRBT", 0, "L", false);
 $pdf->Ln();
-$pdf->Cell(10, 8, "", false, 0, "L", false);
-$pdf->Cell(151, 8, "", false, 0, "L", false);
-$pdf->Cell(35, 8, "", false, 0, "L", false);
-$pdf->Cell(35, 8, "Hourly Rate", "LRBT", 0, "L", false);
-$pdf->Cell(35, 8, "$".$hourly_billing_rate." USD", "LRBT", 0, "L", false);
+$pdf->Cell(10, 7, "", false, 0, "L", false);
+$pdf->Cell(151, 7, "", false, 0, "L", false);
+$pdf->Cell(35, 7, "", false, 0, "L", false);
+$pdf->SetFont('', 'B');
+$pdf->Cell(35, 7, "Hourly Rate", "LRBT", 0, "L", false);
+$pdf->SetFont('');
+$pdf->Cell(35, 7, "$".$hourly_billing_rate." USD", "LRBT", 0, "L", false);
 $pdf->Ln();
-$pdf->Cell(10, 8, "", false, 0, "L", false);
-$pdf->Cell(151, 8, "", false, 0, "L", false);
-$pdf->Cell(35, 8, "", false, 0, "L", false);
-$pdf->Cell(35, 8, "Total Payable", "LRBT", 0, "L", false);
-$pdf->Cell(35, 8, "$".$net_payable." USD", "LRBT", 0, "L", false);
+$pdf->Cell(10, 7, "", false, 0, "L", false);
+$pdf->Cell(151, 7, "", false, 0, "L", false);
+$pdf->Cell(35, 7, "", false, 0, "L", false);
+$pdf->SetFont('', 'B');
+$pdf->Cell(35, 7, "Total Payable", "LRBT", 0, "L", false);
+$pdf->SetFont('');
+$pdf->Cell(35, 7, "$".$net_payable." USD", "LRBT", 0, "L", false);
 $pdf->Ln();
 
 $pdf->lastPage();
