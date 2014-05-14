@@ -13,7 +13,7 @@ class Invoice extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id';
+	public $displayField = 'client_id';
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
