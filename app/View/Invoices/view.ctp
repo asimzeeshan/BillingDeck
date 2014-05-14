@@ -8,17 +8,17 @@
 		</dd>
 		<dt><?php echo __('Client'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($invoice['Client']['first_name'], array('controller' => 'clients', 'action' => 'view', $invoice['Client']['id'])); ?>
+			<?php echo $this->Html->link($invoice['Client']['name'], array('controller' => 'clients', 'action' => 'view', $invoice['Client']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Quickbooks Invoiceid'); ?></dt>
+		<dt><?php echo __('QB InvoiceID'); ?></dt>
 		<dd>
-			<?php echo h($invoice['Invoice']['quickbooks_invoiceid']); ?>
+			<?php echo empty($invoice['Invoice']['quickbooks_invoiceid']) ? "N/A" : $invoice['Invoice']['quickbooks_invoiceid']; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Is Billable'); ?></dt>
 		<dd>
-			<?php echo h($invoice['Invoice']['is_billable']); ?>
+			<?php echo ($invoice['Invoice']['is_billable']==1) ? "<b>Yes</b>" : "<i>No</i>"; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Client Notes'); ?></dt>

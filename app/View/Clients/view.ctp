@@ -38,22 +38,22 @@
 		</dd>
 		<dt><?php echo __('Billing Rate'); ?></dt>
 		<dd>
-			<?php echo h($client['Client']['billing_rate']); ?>
+			$<?php echo h($client['Client']['billing_rate']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Status'); ?></dt>
 		<dd>
-			<?php echo h($client['Client']['status']); ?>
+			<?php echo h(($client['Client']['status']==1)? "Active" : "<i>Inactive</i>"); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
-			<?php echo h($client['Client']['created']); ?>
+			<?php echo h($this->Time->format('F jS, Y', $client['Client']['created'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Modified'); ?></dt>
 		<dd>
-			<?php echo h($client['Client']['modified']); ?>
+			<?php echo h($this->Time->format('F jS, Y', $client['Client']['modified'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

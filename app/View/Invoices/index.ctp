@@ -19,11 +19,11 @@
 			<?php echo $this->Html->link($invoice['Client']['name'], array('controller' => 'clients', 'action' => 'view', $invoice['Client']['id'])); ?>
 		</td>
 		<td><?php echo h($invoice['Invoice']['quickbooks_invoiceid']); ?>&nbsp;</td>
-		<td><?php echo ($invoice['Invoice']['is_billable']==1) ? "Yes" : "No"; ?>&nbsp;</td>
-		<td><?php echo $this->Time->format('M j, Y', $invoice['Invoice']['payment_date']); ?>&nbsp;</td>
+		<td><?php echo ($invoice['Invoice']['is_billable']==1) ? "<b>Yes</b>" : "<i>No</i>"; ?>&nbsp;</td>
+		<td><?php echo $this->Time->format('F jS, Y', $invoice['Invoice']['payment_date']); ?>&nbsp;</td>
 		<td><?php echo h($invoice['Invoice']['status']); ?>&nbsp;</td>
-		<td><?php echo $this->Time->format('M j, Y', $invoice['Invoice']['created']); ?>&nbsp;</td>
-		<td><?php echo $this->Time->format('M j, Y', $invoice['Invoice']['modified']); ?>&nbsp;</td>
+		<td><?php echo $this->Time->format('F jS, Y', $invoice['Invoice']['created']); ?>&nbsp;</td>
+		<td><?php echo $this->Time->format('F jS, Y', $invoice['Invoice']['modified']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $invoice['Invoice']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $invoice['Invoice']['id'])); ?>
