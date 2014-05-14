@@ -103,5 +103,5 @@ $pdf->lastPage();
 $filename = $this->request->data['Client']['vteam_name']."-".date('Y-m-d', strtotime($this->request->data['Invoice']['modified']));
 $filename = str_replace(array(" ", ":", "-","/"), "_", $filename);
 header("Content-type: application/pdf");
-$pdf->Output(APP . 'media/invoices' . DS . $filename.'.pdf', 'I');
+$pdf->Output($filename.'.pdf', 'I');
 exit;
