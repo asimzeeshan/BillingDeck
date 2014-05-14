@@ -1,7 +1,7 @@
 ## BillingDeck
 BillingDeck is my attempt to use CakePHP framework to bake a simple Billing Application
 
-[![CakePHP](http://cakephp.org/img/cake-logo.png)](http://www.cakephp.org)
+[![CakePHP](http://cakephp.org/img/logo/cakephp_logo_125_trans.png)](http://www.cakephp.org)
 
 ## LICENSE
 
