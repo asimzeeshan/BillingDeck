@@ -71,13 +71,12 @@
 		<li><?php echo $this->Html->link(__('New Invoice Item'), array('controller' => 'invoice_items', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<div class="related">
-	<h3><?php echo __('Related Invoice Items'); ?></h3>
+<div class="related view">
+	<h3><?php echo __('Details'); ?></h3>
 	<?php if (!empty($invoice['InvoiceItem'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Invoice Id'); ?></th>
 		<th><?php echo __('Description'); ?></th>
 		<th><?php echo __('Hours'); ?></th>
 		<th><?php echo __('Is Billable'); ?></th>
@@ -88,14 +87,12 @@
 	<?php foreach ($invoice['InvoiceItem'] as $invoiceItem): ?>
 		<tr>
 			<td><?php echo $invoiceItem['id']; ?></td>
-			<td><?php echo $invoiceItem['invoice_id']; ?></td>
 			<td><?php echo $invoiceItem['description']; ?></td>
 			<td><?php echo $invoiceItem['hours']; ?></td>
 			<td><?php echo $invoiceItem['is_billable']; ?></td>
 			<td><?php echo $invoiceItem['created']; ?></td>
 			<td><?php echo $invoiceItem['modified']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'invoice_items', 'action' => 'view', $invoiceItem['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'invoice_items', 'action' => 'edit', $invoiceItem['id'])); ?>
 				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'invoice_items', 'action' => 'delete', $invoiceItem['id']), null, __('Are you sure you want to delete # %s?', $invoiceItem['id'])); ?>
 			</td>
@@ -106,7 +103,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Invoice Item'), array('controller' => 'invoice_items', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Invoice Item'), array('controller' => 'invoice_items', 'action' => 'add', $invoiceItem['invoice_id'])); ?> </li>
 		</ul>
 	</div>
 </div>
