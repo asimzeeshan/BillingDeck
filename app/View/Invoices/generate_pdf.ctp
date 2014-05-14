@@ -46,7 +46,7 @@ $pdf->Ln();
 $pdf->Ln();
 
 // set font to bold
-$this->SetFont('', 'B');
+$pdf->SetFont('', 'B');
 
 // table headers
 $headers = array(
@@ -63,7 +63,7 @@ foreach($headers as $header) {
 $pdf->Ln();
 
 // set font to un-bold
-$this->SetFont('');
+$pdf->SetFont('');
 
 $i = 1;
 $total_hours = 0;
