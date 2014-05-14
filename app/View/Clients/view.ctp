@@ -69,13 +69,12 @@
 		<li><?php echo $this->Html->link(__('New Invoice'), array('controller' => 'invoices', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<div class="related">
+<div class="related view">
 	<h3><?php echo __('Related Invoices'); ?></h3>
 	<?php if (!empty($client['Invoice'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Client Id'); ?></th>
 		<th><?php echo __('Quickbooks Invoiceid'); ?></th>
 		<th><?php echo __('Is Billable'); ?></th>
 		<th><?php echo __('Client Notes'); ?></th>
@@ -90,7 +89,6 @@
 	<?php foreach ($client['Invoice'] as $invoice): ?>
 		<tr>
 			<td><?php echo $invoice['id']; ?></td>
-			<td><?php echo $invoice['client_id']; ?></td>
 			<td><?php echo $invoice['quickbooks_invoiceid']; ?></td>
 			<td><?php echo $invoice['is_billable']; ?></td>
 			<td><?php echo $invoice['client_notes']; ?></td>
