@@ -12,7 +12,7 @@ class Client extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'first_name';
+	public $displayField = 'name';
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -36,6 +36,15 @@ class Client extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		)
+	);
+
+/**
+ * virtualField for first_name, last_name
+ *
+ * @var array
+ */
+	public $virtualFields = array(
+		'name' => 'CONCAT(Client.first_name, " ", Client.last_name)'
 	);
 
 }
