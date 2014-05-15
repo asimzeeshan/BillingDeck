@@ -30,6 +30,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
+		
+		// jQuery 2.1.1
+		echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js');
+		// jQueryUI 2.1.1
+		echo $this->Html->css('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css');
+		echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
