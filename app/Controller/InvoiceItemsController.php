@@ -55,6 +55,14 @@ class InvoiceItemsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			// Hack to save '0' in the appropriate field if that billing type was not selected
+			if ($this->request->data['InvoiceItem']['billing_type']==1) {
+				$this->request->data['InvoiceItem']['billing_rate']	= "0";
+			} else {
+				$this->request->data['InvoiceItem']['hours']		= "0";
+			}
+			// END of Hack
+
 			$this->InvoiceItem->create();
 			if ($this->InvoiceItem->save($this->request->data)) {
 				$this->Session->setFlash(__('The invoice item has been saved.'));
@@ -79,6 +87,14 @@ class InvoiceItemsController extends AppController {
 			throw new NotFoundException(__('Invalid invoice item'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			// Hack to save '0' in the appropriate field if that billing type was not selected
+			if ($this->request->data['InvoiceItem']['billing_type']==1) {
+				$this->request->data['InvoiceItem']['billing_rate']	= "0";
+			} else {
+				$this->request->data['InvoiceItem']['hours']		= "0";
+			}
+			// END of Hack
+			
 			if ($this->InvoiceItem->save($this->request->data)) {
 				$this->Session->setFlash(__('The invoice item has been saved.'));
 				return $this->redirect(array('controller' => 'invoices', 'action' => 'view', $this->request->data['InvoiceItem']['invoice_id']));
