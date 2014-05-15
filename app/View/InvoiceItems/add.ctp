@@ -13,6 +13,25 @@ $(document).ready(function() {
 	showHide(1);
 	jQuery('#InvoiceItemHours').val(0.00);
 	jQuery('#InvoiceItemBillingRate').val(0.00);
+
+	jQuery('#InvoiceItemStartDate').val('<?php echo date('Y-m-d', strtotime('last month')); ?>');
+	jQuery('#InvoiceItemCompletionDate').val('<?php echo date('Y-m-d'); ?>');
+
+	$("#InvoiceItemStartDate").datepicker({
+		   dateFormat: 'yy-mm-dd',
+		   numberOfMonths: 1,
+		   showButtonPanel: true,
+		   changeMonth: true,
+		   changeYear: true,
+	 });
+   
+	$("#InvoiceItemCompletionDate").datepicker({
+		   dateFormat: 'yy-mm-dd',
+		   numberOfMonths: 1,
+		   showButtonPanel: true,
+		   changeMonth: true,
+		   changeYear: true,
+	 });
 });
 //-->
 </script>
@@ -22,10 +41,10 @@ $(document).ready(function() {
 		<legend><?php echo __('Add Invoice Item'); ?></legend>
 	<?php
 		echo $this->Form->input('invoice_id', array('default'=>$this->request->pass[0]));
-		echo $this->Form->input('billing_type', array('options' => array(1=>"Hourly Billing", 2=>"Fixed Rate Service"), 'onchange' => 'showHide(this.value);'));
+		echo $this->Form->input('billing_type', array('options' => array(1=>"Hourly Billing", 2=>"Fixed Billing"), 'onchange' => 'showHide(this.value);'));
 		echo $this->Form->input('description');
-		echo $this->Form->input('start_date');
-		echo $this->Form->input('completion_date');
+		echo $this->Form->input('start_date', array('type'=>'text'));
+		echo $this->Form->input('completion_date', array('type'=>'text'));
 		echo $this->Form->input('hours');
 		echo $this->Form->input('billing_rate');
 		echo $this->Form->input('is_billable', array('checked'=>'checked'));

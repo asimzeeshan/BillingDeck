@@ -79,10 +79,12 @@
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Type'); ?></th>
 		<th><?php echo __('Description'); ?></th>
 		<th><?php echo __('Start Date'); ?></th>
 		<th><?php echo __('Completion Date'); ?></th>
 		<th><?php echo __('Hours'); ?></th>
+		<th><?php echo __('Billing'); ?></th>
 		<th><?php echo __('Is Billable'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
@@ -91,10 +93,12 @@
 	<?php foreach ($invoice['InvoiceItem'] as $invoiceItem): ?>
 		<tr>
 			<td><?php echo $invoiceItem['id']; ?></td>
+			<td><?php echo ($invoiceItem['billing_type']==1) ? "Hourly" : "Fixed"; ?></td>
 			<td><?php echo $invoiceItem['description']; ?></td>
 			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['start_date']); ?></td>
 			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['completion_date']); ?></td>
-			<td><?php echo $invoiceItem['hours']; ?></td>
+			<td><?php echo ($invoiceItem['billing_type']==1) ? $invoiceItem['hours'] : "<i>N/A</i>"; ?></td>
+			<td><?php echo ($invoiceItem['billing_type']==2) ? $invoiceItem['billing_rate'] : "<i>N/A</i>"; ?></td>
 			<td><?php echo ($invoiceItem['is_billable']==1) ? "<b>Yes</b>" : "<i>No</i>"; ?></td>
 			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['created']); ?></td>
 			<td><?php echo $this->Time->format('M j, Y', $invoiceItem['modified']); ?></td>

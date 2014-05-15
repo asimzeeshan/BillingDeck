@@ -94,7 +94,7 @@ class InvoiceItemsController extends AppController {
 				$this->request->data['InvoiceItem']['hours']		= "0";
 			}
 			// END of Hack
-			
+
 			if ($this->InvoiceItem->save($this->request->data)) {
 				$this->Session->setFlash(__('The invoice item has been saved.'));
 				return $this->redirect(array('controller' => 'invoices', 'action' => 'view', $this->request->data['InvoiceItem']['invoice_id']));

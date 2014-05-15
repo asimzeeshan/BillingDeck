@@ -11,9 +11,24 @@
 			<?php echo $this->Html->link($invoiceItem['Invoice']['id'], array('controller' => 'invoices', 'action' => 'view', $invoiceItem['Invoice']['id'])); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Billing Type'); ?></dt>
+		<dd>
+			<?php echo ($invoiceItem['InvoiceItem']['billing_type']==1) ? "Hourly Billing" : "Fixed Services"; ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Description'); ?></dt>
 		<dd>
 			<?php echo h($invoiceItem['InvoiceItem']['description']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Start Date'); ?></dt>
+		<dd>
+			<?php echo $this->Time->format('M j, Y', $invoiceItem['InvoiceItem']['start_date']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Completion Date'); ?></dt>
+		<dd>
+			<?php echo $this->Time->format('M j, Y', $invoiceItem['InvoiceItem']['completion_date']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Hours'); ?></dt>
@@ -21,19 +36,24 @@
 			<?php echo h($invoiceItem['InvoiceItem']['hours']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Billing Rate'); ?></dt>
+		<dd>
+			<?php echo h($invoiceItem['InvoiceItem']['billing_rate']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Is Billable'); ?></dt>
 		<dd>
-			<?php echo h($invoiceItem['InvoiceItem']['is_billable']); ?>
+			<?php echo ($invoiceItem['InvoiceItem']['is_billable']==1) ? 'Yes' : 'No'; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
-			<?php echo h($invoiceItem['InvoiceItem']['created']); ?>
+			<?php echo $this->Time->format('M j, Y', $invoiceItem['InvoiceItem']['created']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Modified'); ?></dt>
 		<dd>
-			<?php echo h($invoiceItem['InvoiceItem']['modified']); ?>
+			<?php echo $this->Time->format('M j, Y', $invoiceItem['InvoiceItem']['modified']); ?>
 			&nbsp;
 		</dd>
 	</dl>
