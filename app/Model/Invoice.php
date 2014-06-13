@@ -45,7 +45,7 @@ class Invoice extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => 'id asc',
+			'order' => 'start_date asc',
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',
