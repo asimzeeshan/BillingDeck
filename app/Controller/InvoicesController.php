@@ -43,7 +43,10 @@ class InvoicesController extends AppController {
 		if (!$this->Invoice->exists($id)) {
 			throw new NotFoundException(__('Invalid invoice'));
 		}
-		$options = array('conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id));
+		$options = array(
+						'conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id),
+						'order' => array('Invoice.' . $this->Invoice->primaryKey => 'asc')
+						);
 		$this->set('invoice', $this->Invoice->find('first', $options));
 	}
 
@@ -122,7 +125,10 @@ class InvoicesController extends AppController {
 		if (!$this->Invoice->exists()) {
 			throw new NotFoundException(__('Invalid invoice'));
 		}
-		$options = array('conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id));
+		$options = array(
+						'conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id),
+						'order' => array('Invoice.' . $this->Invoice->primaryKey => 'asc')
+						);
 		$this->request->data = $this->Invoice->find('first', $options);
 		//print_r($this->request->data); exit;
 		$this->layout = '/pdf/default';
