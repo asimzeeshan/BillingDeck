@@ -45,7 +45,7 @@ class InvoicesController extends AppController {
 		}
 		$options = array(
 						'conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id),
-						'order' => array('Invoice.' . $this->Invoice->primaryKey => 'asc')
+						'order' => array('InvoiceItem.' . $this->Invoice->primaryKey => 'asc')
 						);
 		$this->set('invoice', $this->Invoice->find('first', $options));
 	}
@@ -127,7 +127,7 @@ class InvoicesController extends AppController {
 		}
 		$options = array(
 						'conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id),
-						'order' => array('Invoice.' . $this->Invoice->primaryKey => 'asc')
+						'order' => array('InvoiceItem.' . $this->Invoice->primaryKey => 'asc')
 						);
 		$this->request->data = $this->Invoice->find('first', $options);
 		//print_r($this->request->data); exit;
