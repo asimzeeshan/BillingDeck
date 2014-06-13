@@ -125,7 +125,7 @@ class InvoicesController extends AppController {
 			throw new NotFoundException(__('Invalid invoice'));
 		}
 		$options = array(
-						'conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id)
+						'conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id),
 						);
 		$this->request->data = $this->Invoice->find('first', $options);
 		//print_r($this->request->data); exit;
