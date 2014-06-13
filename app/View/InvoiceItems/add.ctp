@@ -40,7 +40,7 @@ $(document).ready(function() {
 	<fieldset>
 		<legend><?php echo __('Add Invoice Item'); ?></legend>
 	<?php
-		echo $this->Form->input('invoice_id', array('default'=>$this->request->pass[0], 'hiddenField' => true));
+		echo $this->Form->input('invoice_id', array('default'=>$this->request->pass[0], 'options' => array('hiddenField'=> 'true')));
 		echo $this->Form->input('billing_type', array('options' => array(1=>"Hourly Billing", 2=>"Fixed Billing"), 'onchange' => 'showHide(this.value);'));
 		echo $this->Form->input('description');
 		echo $this->Form->input('start_date', array('type'=>'text'));
