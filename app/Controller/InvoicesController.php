@@ -44,8 +44,7 @@ class InvoicesController extends AppController {
 			throw new NotFoundException(__('Invalid invoice'));
 		}
 		$options = array(
-						'conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id),
-						'order' => array('InvoiceItem.' . $this->Invoice->primaryKey => 'asc')
+						'conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id)
 						);
 		$this->set('invoice', $this->Invoice->find('first', $options));
 	}
@@ -126,8 +125,7 @@ class InvoicesController extends AppController {
 			throw new NotFoundException(__('Invalid invoice'));
 		}
 		$options = array(
-						'conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id),
-						'order' => array('InvoiceItem.' . $this->Invoice->primaryKey => 'asc')
+						'conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id)
 						);
 		$this->request->data = $this->Invoice->find('first', $options);
 		//print_r($this->request->data); exit;

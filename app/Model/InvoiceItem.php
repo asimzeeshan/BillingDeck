@@ -13,6 +13,7 @@ class InvoiceItem extends AppModel {
  * @var string
  */
 	public $displayField = 'invoice_id';
+	public $order = "InvoiceItem.id asc";
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
