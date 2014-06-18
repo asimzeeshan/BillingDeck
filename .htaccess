@@ -2,8 +2,7 @@
    RewriteEngine on
 
    # allow accessing of custom scripts
-   RewriteCond %{REQUEST_FILENAME} !-d
-   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteRule ^/?info.php$ - [L]
    # end custom config
 
    RewriteRule    ^$ app/webroot/    [L]
