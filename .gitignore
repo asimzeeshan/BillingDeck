@@ -11,6 +11,9 @@
 ######################
 .idea
 
+# Codio specific files (http://codio.com)
+######################
+.codio
 
 # OS generated files #
 ######################
