@@ -65,9 +65,9 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'billingd_dev',
-		'password' => 'ec5K4LqtD7dW',
-		'database' => 'billingd_dev',
+		'login' => 'billingdeck',
+		'password' => 'C4CMmPMzS73Zpx6w',
+		'database' => 'billingdeck',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
