@@ -1,5 +1,11 @@
 <IfModule mod_rewrite.c>
    RewriteEngine on
+
+   # allow accessing of custom scripts
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteCond %{REQUEST_FILENAME} !-f
+   # end custom config
+
    RewriteRule    ^$ app/webroot/    [L]
    RewriteRule    (.*) app/webroot/$1 [L]
 </IfModule>
