@@ -1,16 +1,20 @@
 # User specific & automatically generated files #
 #################################################
-#/app/Config/database.php
+/app/Config/database.php
 /app/tmp
 /lib/Cake/Console/Templates/skel/tmp/
 /build
 /dist
 /tags
+/info.php
 
 # PHPStorm specific stuff
 ######################
 .idea
 
+# Codio specific files (http://codio.com)
+######################
+.codio
 
 # OS generated files #
 ######################
