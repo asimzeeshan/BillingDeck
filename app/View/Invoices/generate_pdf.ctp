@@ -50,8 +50,8 @@ $pdf->SetFont('', 'B', '9');
 
 // table headers
 $headers = array(
-			array(10, '#', 'LRBT'),
-			array(10, 'Type', 'LRBT'),
+			array(9, '#', 'LRBT'),
+			array(11, 'Type', 'LRBT'),
 			array(80, 'Tasks Performed', 'LRBT'),
 			array(20, 'Hours', 'LRBT'),
 			array(20, 'Start Date', 'LRBT'),
@@ -75,21 +75,38 @@ foreach($this->request->data['InvoiceItem'] as $InvoiceItem) {
 	$incoice_hours_spent  = ($InvoiceItem['billing_type']==1) ? $InvoiceItem['hours'] : "-";
 	$item_cost_raw = ($InvoiceItem['billing_type']==1) ? ($InvoiceItem['hours']*$this->request->data['Client']['billing_rate']) : $InvoiceItem['billing_rate'];
 	$item_cost = number_format($item_cost_raw, 2);
+	
+	if (strlen($InvoiceItem['description'])< 60) {
+		$cell_height = 7;
+	} else {
+		$string_length = strlen($InvoiceItem['description']);	
+		$cell_height = 14;
+	}
+	
+	$pdf->Cell(9, $cell_height, $i, "LRB", 0, "L", false);
+	$pdf->Cell(11, $cell_height, $invoice_billing_type, "LRB", 0, "LT", false);
+
+	$current_y = $pdf->GetY();
+	$current_x = $pdf->GetX() + 80;
+	$pdf->MultiCell(80, $cell_height, $InvoiceItem['description'], "LRB", "LT", false);
+	$pdf->SetXY($current_x, $current_y);
+	
+	$pdf->Cell(20, $cell_height, $incoice_hours_spent, "LRB", 0, "R", false);
+	$pdf->Cell(20, $cell_height, $this->Time->format('M j, Y', $InvoiceItem['start_date']), "LRB", 0, "LT", false);
+	$pdf->Cell(20, $cell_height, $this->Time->format('M j, Y', $InvoiceItem['completion_date']), "LRB", 0, "LT", false);
 	if ($InvoiceItem['is_billable']=="1") {
-		$pdf->Cell(10, 7, $i, "LRBT", 0, "L", false);
-		$pdf->Cell(10, 7, $invoice_billing_type, "LRBT", 0, "L", false);
-		$pdf->Cell(80, 7, $InvoiceItem['description'], "LRBT", 0, "L", false);
-		$pdf->Cell(20, 7, $incoice_hours_spent, "LRBT", 0, "L", false);
-		$pdf->Cell(20, 7, $this->Time->format('M j, Y', $InvoiceItem['start_date']), "LRBT", 0, "L", false);
-		$pdf->Cell(20, 7, $this->Time->format('M j, Y', $InvoiceItem['completion_date']), "LRBT", 0, "L", false);
-		$pdf->Cell(20, 7, "$".$item_cost, "LRBT", 0, "L", false);
-		$pdf->Ln();
-		$i++;
+		$pdf->Cell(20, $cell_height, "$".$item_cost, "LRB", 0, "R", false);
+	} else {
+		$pdf->Cell(20, $cell_height, "FREE", "LRB", 0, "R", false);
+	}
+	$pdf->Ln();
+	$i++;
+
+	if ($InvoiceItem['is_billable']=="1") {
 		$total_hours += $InvoiceItem['hours'];
 		$grand_total_cost += $item_cost_raw;
 	}
 }
-
 $hourly_billing_rate = number_format($this->request->data['Client']['billing_rate'], 2);
 
 $net_payable = $this->request->data['Client']['billing_rate'] * $total_hours;
