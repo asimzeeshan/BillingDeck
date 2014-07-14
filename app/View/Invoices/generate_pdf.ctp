@@ -78,7 +78,7 @@ foreach($this->request->data['InvoiceItem'] as $InvoiceItem) {
 	if ($InvoiceItem['is_billable']=="1") {
 		$pdf->Cell(10, 7, $i, "LRBT", 0, "L", false);
 		$pdf->Cell(10, 7, $invoice_billing_type, "LRBT", 0, "L", false);
-		$pdf->Cell(80, 7, $InvoiceItem['description'], "LRBT", 0, "L", false);
+		$pdf->MultiCell(80, 7, $InvoiceItem['description'], "LRBT", 0, "L", false);
 		$pdf->Cell(20, 7, $incoice_hours_spent, "LRBT", 0, "L", false);
 		$pdf->Cell(20, 7, $this->Time->format('M j, Y', $InvoiceItem['start_date']), "LRBT", 0, "L", false);
 		$pdf->Cell(20, 7, $this->Time->format('M j, Y', $InvoiceItem['completion_date']), "LRBT", 0, "L", false);
